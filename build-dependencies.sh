@@ -29,7 +29,7 @@ fi
 
 
 PRYSM_DIR=./dependencies/prysm
-GETH_DIR=./dependencies/go-ethereum
+GETH_DIR=/home/tfe-student/Documents/GitHub/go-ethereum
 
 ( cd $PRYSM_DIR && bazel build //cmd/beacon-chain:beacon-chain && bazel build //cmd/validator:validator && bazel build //cmd/prysmctl:prysmctl )
 

@@ -19,7 +19,7 @@ fi
 NETWORK_DIR=./network
 
 # Change this number for your desired number of nodes
-NUM_NODES=2
+NUM_NODES=3
 
 # Port information. All ports will be incremented upon
 # with more validators to prevent port conflicts on a single machine
@@ -62,8 +62,8 @@ pkill bootnode || echo "No existing bootnode processes"
 
 # Set Paths for your binaries. Configure as you wish, particularly
 # if you're developing on a local fork of geth/prysm
-GETH_BINARY=./dependencies/go-ethereum/build/bin/geth
-GETH_BOOTNODE_BINARY=./dependencies/go-ethereum/build/bin/bootnode
+GETH_BINARY=/home/tfe-student/Documents/GitHub/go-ethereum/build/bin/geth
+GETH_BOOTNODE_BINARY=/home/tfe-student/Documents/GitHub/go-ethereum/build/bin/bootnode
 
 PRYSM_CTL_BINARY=./dependencies/prysm/bazel-bin/cmd/prysmctl/prysmctl_/prysmctl
 PRYSM_BEACON_BINARY=./dependencies/prysm/bazel-bin/cmd/beacon-chain/beacon-chain_/beacon-chain
@@ -136,33 +136,93 @@ for (( i=0; i<$NUM_NODES; i++ )); do
       --datadir=$NODE_DIR/execution \
       $NODE_DIR/execution/genesis.json
 
-    # Start geth execution client for this node
-    $GETH_BINARY \
-      --networkid=${CHAIN_ID:-32382} \
-      --http \
-      --http.api=eth,net,web3 \
-      --http.addr=127.0.0.1 \
-      --http.corsdomain="*" \
-      --http.port=$((GETH_HTTP_PORT + i)) \
-      --port=$((GETH_NETWORK_PORT + i)) \
-      --metrics.port=$((GETH_METRICS_PORT + i)) \
-      --ws \
-      --ws.api=eth,net,web3 \
-      --ws.addr=127.0.0.1 \
-      --ws.origins="*" \
-      --ws.port=$((GETH_WS_PORT + i)) \
-      --authrpc.vhosts="*" \
-      --authrpc.addr=127.0.0.1 \
-      --authrpc.jwtsecret=$NODE_DIR/execution/jwtsecret \
-      --authrpc.port=$((GETH_AUTH_RPC_PORT + i)) \
-      --datadir=$NODE_DIR/execution \
-      --password=$geth_pw_file \
-      --bootnodes=$bootnode_enode \
-      --identity=node-$i \
-      --maxpendpeers=$NUM_NODES \
-      --verbosity=3 \
-      --syncmode=full > "$NODE_DIR/logs/geth.log" 2>&1 &
-
+    if [ $i -eq 0 ]; then 
+        # Start geth execution client for this node
+        $GETH_BINARY \
+          --networkid=${CHAIN_ID:-32382} \
+          --http \
+          --http.api=eth,net,web3 \
+          --http.addr=127.0.0.1 \
+          --http.corsdomain="*" \
+          --http.port=$((GETH_HTTP_PORT + i)) \
+          --port=$((GETH_NETWORK_PORT + i)) \
+          --metrics.port=$((GETH_METRICS_PORT + i)) \
+          --ws \
+          --ws.api=eth,net,web3 \
+          --ws.addr=127.0.0.1 \
+          --ws.origins="*" \
+          --ws.port=$((GETH_WS_PORT + i)) \
+          --authrpc.vhosts="*" \
+          --authrpc.addr=127.0.0.1 \
+          --authrpc.jwtsecret=$NODE_DIR/execution/jwtsecret \
+          --authrpc.port=$((GETH_AUTH_RPC_PORT + i)) \
+          --datadir=$NODE_DIR/execution \
+          --password=$geth_pw_file \
+          --bootnodes=$bootnode_enode \
+          --identity=node-$i \
+          --maxpendpeers=$NUM_NODES \
+          --verbosity=3 \
+          --syncmode=full \
+          --vmtrace=noop \
+          --vmtrace.jsonconfig='{"path": "/home/tfe-student/Documents/GitHub/ethereum-pos-testnet", "maxSize": 100}' \
+          --servermode > "$NODE_DIR/logs/geth.log" 2>&1 &
+    elif [ $i -eq 1 ]; then
+        # Start geth execution client for this node
+        $GETH_BINARY \
+          --networkid=${CHAIN_ID:-32382} \
+          --http \
+          --http.api=eth,net,web3 \
+          --http.addr=127.0.0.1 \
+          --http.corsdomain="*" \
+          --http.port=$((GETH_HTTP_PORT + i)) \
+          --port=$((GETH_NETWORK_PORT + i)) \
+          --metrics.port=$((GETH_METRICS_PORT + i)) \
+          --ws \
+          --ws.api=eth,net,web3 \
+          --ws.addr=127.0.0.1 \
+          --ws.origins="*" \
+          --ws.port=$((GETH_WS_PORT + i)) \
+          --authrpc.vhosts="*" \
+          --authrpc.addr=127.0.0.1 \
+          --authrpc.jwtsecret=$NODE_DIR/execution/jwtsecret \
+          --authrpc.port=$((GETH_AUTH_RPC_PORT + i)) \
+          --datadir=$NODE_DIR/execution \
+          --password=$geth_pw_file \
+          --bootnodes=$bootnode_enode \
+          --identity=node-$i \
+          --maxpendpeers=$NUM_NODES \
+          --verbosity=3 \
+          --syncmode=full \
+          --clientmode > "$NODE_DIR/logs/geth.log" 2>&1 &
+    else 
+        # Start geth execution client for this node
+        $GETH_BINARY \
+          --networkid=${CHAIN_ID:-32382} \
+          --http \
+          --http.api=eth,net,web3 \
+          --http.addr=127.0.0.1 \
+          --http.corsdomain="*" \
+          --http.port=$((GETH_HTTP_PORT + i)) \
+          --port=$((GETH_NETWORK_PORT + i)) \
+          --metrics.port=$((GETH_METRICS_PORT + i)) \
+          --ws \
+          --ws.api=eth,net,web3 \
+          --ws.addr=127.0.0.1 \
+          --ws.origins="*" \
+          --ws.port=$((GETH_WS_PORT + i)) \
+          --authrpc.vhosts="*" \
+          --authrpc.addr=127.0.0.1 \
+          --authrpc.jwtsecret=$NODE_DIR/execution/jwtsecret \
+          --authrpc.port=$((GETH_AUTH_RPC_PORT + i)) \
+          --datadir=$NODE_DIR/execution \
+          --password=$geth_pw_file \
+          --bootnodes=$bootnode_enode \
+          --identity=node-$i \
+          --maxpendpeers=$NUM_NODES \
+          --verbosity=3 \
+          --syncmode=full > "$NODE_DIR/logs/geth.log" 2>&1 &
+    fi
+    
     sleep 5
 
     # Start prysm consensus client for this node
@@ -191,20 +251,21 @@ for (( i=0; i<$NUM_NODES; i++ )); do
       --slasher \
       --enable-debug-rpc-endpoints > "$NODE_DIR/logs/beacon.log" 2>&1 &
 
-    # Start prysm validator for this node. Each validator node will
-    # manage 1 validator
-    $PRYSM_VALIDATOR_BINARY \
-      --beacon-rpc-provider=localhost:$((PRYSM_BEACON_RPC_PORT + i)) \
-      --datadir=$NODE_DIR/consensus/validatordata \
-      --accept-terms-of-use \
-      --interop-num-validators=1 \
-      --interop-start-index=$i \
-      --rpc-port=$((PRYSM_VALIDATOR_RPC_PORT + i)) \
-      --grpc-gateway-port=$((PRYSM_VALIDATOR_GRPC_GATEWAY_PORT + i)) \
-      --monitoring-port=$((PRYSM_VALIDATOR_MONITORING_PORT + i)) \
-      --graffiti="node-$i" \
-      --chain-config-file=$NODE_DIR/consensus/config.yml > "$NODE_DIR/logs/validator.log" 2>&1 &
-
+    if [ $i -ne 0 ]; then
+        # Start prysm validator for this node. Each validator node will
+        # manage 1 validator
+        $PRYSM_VALIDATOR_BINARY \
+          --beacon-rpc-provider=localhost:$((PRYSM_BEACON_RPC_PORT + i)) \
+          --datadir=$NODE_DIR/consensus/validatordata \
+          --accept-terms-of-use \
+          --interop-num-validators=1 \
+          --interop-start-index=$i \
+          --rpc-port=$((PRYSM_VALIDATOR_RPC_PORT + i)) \
+          --grpc-gateway-port=$((PRYSM_VALIDATOR_GRPC_GATEWAY_PORT + i)) \
+          --monitoring-port=$((PRYSM_VALIDATOR_MONITORING_PORT + i)) \
+          --graffiti="node-$i" \
+          --chain-config-file=$NODE_DIR/consensus/config.yml > "$NODE_DIR/logs/validator.log" 2>&1 &
+    fi
 
     # Check if the PRYSM_BOOTSTRAP_NODE variable is already set
     if [[ -z "${PRYSM_BOOTSTRAP_NODE}" ]]; then
