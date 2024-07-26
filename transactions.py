@@ -14,23 +14,35 @@ account_from = {
 }
 
 nonce = w3.eth.get_transaction_count(account_from['address'])
-gas = 21000
-gas_price = w3.to_wei('50', 'gwei')
+gas_limit = 21000
+max_fee_per_gas = w3.to_wei('100', 'gwei')  # Max fee per gas
+max_priority_fee_per_gas = w3.to_wei('2', 'gwei')  # Max priority fee per gas
 chain_id = 32382
 
+nbr_transactions = 10
 
+# Contract address
+contract_address = '0x4242424242424242424242424242424242424242'
 
-# Send 100 transactions
-for i in range(100):
+# Create and collect transactions
+for i in range(nbr_transactions):
+    # Alternate between the original recipient address and the contract address
+    recipient = '0x8D512169343cc6e108a8bB6ec5bc116C416eFc8E' if i % 2 == 0 else contract_address
+
     # Set up transaction details
     tx = {
+        'type': 2,  # Specify EIP-1559 transaction
         'nonce': nonce + i,
-        'to': '0x8D512169343cc6e108a8bB6ec5bc116C416eFc8E',
+        'to': recipient,
         'value': w3.to_wei(0.01, 'ether'),
-        'gas': gas,
-        'gasPrice': gas_price,
-        'chainId': chain_id
+        'gas': gas_limit,
+        'maxFeePerGas': max_fee_per_gas,
+        'maxPriorityFeePerGas': max_priority_fee_per_gas,
+        'chainId': chain_id,
+        'data': '0x' if recipient == contract_address else ''  # Data field is empty unless sending to the contract
     }
+    
+    print(f'Transaction {i} details: {tx}')
 
     # Sign the transaction
     signed_tx = w3.eth.account.sign_transaction(tx, account_from['private_key'])

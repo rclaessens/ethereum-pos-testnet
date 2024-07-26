@@ -19,7 +19,7 @@ fi
 NETWORK_DIR=./network
 
 # Change this number for your desired number of nodes
-NUM_NODES=3
+NUM_NODES=2
 
 # Port information. All ports will be incremented upon
 # with more validators to prevent port conflicts on a single machine
@@ -163,8 +163,6 @@ for (( i=0; i<$NUM_NODES; i++ )); do
           --maxpendpeers=$NUM_NODES \
           --verbosity=3 \
           --syncmode=full \
-          --vmtrace=noop \
-          --vmtrace.jsonconfig='{"path": "/home/tfe-student/Documents/GitHub/ethereum-pos-testnet", "maxSize": 100}' \
           --servermode > "$NODE_DIR/logs/geth.log" 2>&1 &
     elif [ $i -eq 1 ]; then
         # Start geth execution client for this node

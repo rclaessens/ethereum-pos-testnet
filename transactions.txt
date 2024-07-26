@@ -1,0 +1,91 @@
+Python
+INFO [07-23|10:52:30.283] Marshaled transaction to JSON            json="{\"type\":\"0x0\",\"chainId\":\"0x7e7e\",\"nonce\":\"0x0\",\"to\":\"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\",\"gas\":\"0x5208\",\"gasPrice\":\"0xba43b7400\",\"maxPriorityFeePerGas\":null,\"maxFeePerGas\":null,\"value\":\"0x2386f26fc10000\",\"input\":\"0x\",\"v\":\"0xfd1f\",\"r\":\"0x90e858db619dc11a78bce1746f45d515a9b40a89ec54072ebe6ef3208b249379\",\"s\":\"0x68ddf913e343ccd2d93ebf88bc8f422065e9b2e7ab9f19fd1cb39f0618ee2c43\",\"hash\":\"0x1d424be4614fffd94de1c692ea973705fdea4df426b3fdd03c1480a1d1b4218b\"}"
+bash
+INFO [07-24|10:15:05.197] Received request body                    body="[{\"type\":\"0x2\",\"chainId\":\"0x7e7e\",\"nonce\":\"0x0\",\"to\":\"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\",\"gas\":\"0x5208\",\"gasPrice\":null,\"maxPriorityFeePerGas\":\"0x0\",\"maxFeePerGas\":\"0x3d24bd10\",\"value\":\"0x2386f26fc10000\",\"input\":\"0x\",\"accessList\":[],\"v\":\"0x1\",\"r\":\"0x1cf49a686fbc61943e5c80f331ba435be9b06cbaf94baa34c4cab1b8749e492e\",\"s\":\"0x4e99be725ce154c9b9356b469d42ef6922fd1e93e4c16ff1d5e6c13685cb8948\",\"yParity\":\"0x1\",\"hash\":\"0xf2d6ff35abe3c24a0f208bd5ffdec3d85382ede9f92904b1c377742564a44d57\"}]"
+
+INFO [07-24|11:45:24.029] Tracer result                            
+result=
+"{\"post\":
+    {\"0x0000000000000000000000000000000000000000\":{\"balance\":\"0x2632e314a000\"},  Coinbase address ??
+     \"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\":{\"balance\":\"0x2386f26fc10000\"},
+     \"0xb59616524d51f5f557f94f6cf7ac258599df3a97\":{\"balance\":\"0x43c339dd599ce515a00\",\"nonce\":1}}, Mon adresse avec des ether dessus
+  \"pre\":
+    {\"0x0000000000000000000000000000000000000000\":{\"balance\":\"0x0\"},
+     \"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\":{\"balance\":\"0x0\"},
+     \"0xb59616524d51f5f557f94f6cf7ac258599df3a97\":{\"balance\":\"0x43c33c1937564800000\"}}
+}"
+INFO [07-24|11:45:24.029] Tracer result                            
+result=
+"{\"post\":
+    {\"0x0000000000000000000000000000000000000000\":{\"balance\":\"0x4c65c6294000\"},
+     \"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\":{\"balance\":\"0x470de4df820000\"},
+     \"0xb59616524d51f5f557f94f6cf7ac258599df3a97\":{\"balance\":\"0x43c337a17be3822b400\",\"nonce\":2}},
+  \"pre\":
+    {\"0x0000000000000000000000000000000000000000\":{\"balance\":\"0x2632e314a000\"},
+     \"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\":{\"balance\":\"0x2386f26fc10000\"},
+     \"0xb59616524d51f5f557f94f6cf7ac258599df3a97\":{\"balance\":\"0x43c339dd599ce515a00\",\"nonce\":1}}
+}"
+
+INFO [07-24|18:21:13.004] Tracer result                            
+result=
+"{
+\"post\":{\"0x0000000000000000000000000000000000000000\":{\"balance\":\"0x4c65c6294000\"},\"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\":{\"balance\":\"0x470de4df820000\"},\"0xb59616524d51f5f557f94f6cf7ac258599df3a97\":{\"balance\":\"0x43c337a1bebc8f8f580\",\"nonce\":2}},
+\"pre\":{\"0x0000000000000000000000000000000000000000\":{\"balance\":\"0x2632e314a000\"},\"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\":{\"balance\":\"0x2386f26fc10000\"},\"0xb59616524d51f5f557f94f6cf7ac258599df3a97\":{\"balance\":\"0x43c339dd7b096bc7ac0\",\"nonce\":1}},
+\"tx\":{\"type\":\"0x2\",\"chainId\":\"0x7e7e\",\"nonce\":\"0x1\",\"to\":\"0x8d512169343cc6e108a8bb6ec5bc116c416efc8e\",\"gas\":\"0x5208\",\"gasPrice\":null,\"maxPriorityFeePerGas\":\"0x77359400\",\"maxFeePerGas\":\"0x174876e800\",\"value\":\"0x2386f26fc10000\",\"input\":\"0x\",\"accessList\":[],\"v\":\"0x0\",\"r\":\"0x37b3398b334d8db5bca8d2fade1535dd7eefbdd3cf6b01dbb063ee51d9e94de2\",\"s\":\"0xc5ff2a31ed86a982bc6158b95dab974f6b2d917ea8b58397ba81be0a0aebc5a\",\"yParity\":\"0x0\",\"hash\":\"0x53accdbc584c40d7557d024c48cf9e64055d7e4a2a22aefcc378b8c7cedd2920\"},
+\"receipt\":{\"type\":\"0x2\",\"root\":\"0x\",\"status\":\"0x1\",\"cumulativeGasUsed\":\"0xa410\",\"logsBloom\":\"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\",\"logs\":null,\"transactionHash\":\"0x53accdbc584c40d7557d024c48cf9e64055d7e4a2a22aefcc378b8c7cedd2920\",\"contractAddress\":\"0x0000000000000000000000000000000000000000\",\"gasUsed\":\"0x5208\",\"effectiveGasPrice\":null,\"blockHash\":\"0x577812875829175ab5ac568b79b58ff760b37b33323631a11e856b12ba193f07\",\"blockNumber\":\"0x3\",\"transactionIndex\":\"0x0\"}}"
+
+INFO [07-25|13:57:11.004] Received response from server            status="200 OK" body=
+"{
+\"results\":null,
+\"env\":{\"Signer\":{},\"State\":{\"AccountReads\":0,\"AccountHashes\":0,\"AccountUpdates\":0,\"AccountCommits\":0,\"StorageReads\":0,\"StorageHashes\":0,\"StorageUpdates\":0,\"StorageCommits\":0,\"SnapshotAccountReads\":0,\"SnapshotStorageReads\":0,\"SnapshotCommits\":0,\"TrieDBCommits\":0,\"AccountUpdated\":0,\"StorageUpdated\":0,\"AccountDeleted\":0,\"StorageDeleted\":0},\"Tcount\":0,\"GasPool\":30000000,\"Coinbase\":\"0x123463a4b065722e99115d6c222f267d9cabb524\",\"Header\":{\"parentHash\":\"0x78e5ad7245d6a171bede9f316d511a2cd4021c4754437bb235f15e46fabd0e9f\",\"sha3Uncles\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"miner\":\"0x123463a4b065722e99115d6c222f267d9cabb524\",\"stateRoot\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"transactionsRoot\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"receiptsRoot\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"logsBloom\":\"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\",\"difficulty\":\"0x0\",\"number\":\"0x3\",\"gasLimit\":\"0x1c9c380\",\"gasUsed\":\"0x0\",\"timestamp\":\"0x66a23d9f\",\"extraData\":\"0xd883010e00846765746888676f312e32322e35856c696e7578\",\"mixHash\":\"0xbc46df1e873f1916b2254a18556c9f0fa993114d9826fb5acbb16567c0640295\",\"nonce\":\"0x0000000000000000\",\"baseFeePerGas\":\"0x27ee3253\",\"withdrawalsRoot\":null,\"blobGasUsed\":\"0x0\",\"excessBlobGas\":\"0x0\",\"parentBeaconBlockRoot\":\"0x049951170c92b335243501e0f3acf1ce7976174fbf2631ef6a2fa41f664b1775\",\"hash\":\"0x1c07be76fe96daa9dc224b515daa0315bd6e4fe10af013dd9f153d98d5ab7346\"},\"Txs\":null,\"Receipts\":null,\"Sidecars\":null,\"Blobs\":0}}\n"
+
+marshalReceipt
+
+GasUsed()
+
+CumulativeGasUsed()
+
+ValidateState
+
+summarizeBadBlock(
+
+INFO [07-26|16:10:59.020] State modification                       pre="map[0x123463a4B065722E99115D6c222f267d9cABb524:0xc000643200 0x8D512169343cc6e108a8bB6ec5bc116C416eFc8E:0xc000643260 0xb59616524d51f5F557f94f6cF7Ac258599DF3A97:0xc0006432c0]" post="map[0x123463a4B065722E99115D6c222f267d9cABb524:0xc000643080 0x8D512169343cc6e108a8bB6ec5bc116C416eFc8E:0xc0006430e0 0xb59616524d51f5F557f94f6cF7Ac258599DF3A97:0xc000643140]"
+INFO [07-26|16:10:59.020] Receipt                                  
+receipt=
+"&{
+Type:2 
+PostState:[] 
+Status:1 
+CumulativeGasUsed:21000 
+Bloom:[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] 
+Logs:[] 
+TxHash:0x596593c592a2dfda4c3bdd5fb6eea5797bf188d7aaabc8715ae13a3630378f11 
+ContractAddress:0x0000000000000000000000000000000000000000 
+GasUsed:21000 
+EffectiveGasPrice:<nil> 
+BlobGasUsed:0 
+BlobGasPrice:<nil> 
+BlockHash:0x47103b4ce40981aedd04423a2297886a194a58c1945a1a823029759f14623fc7 
+BlockNumber:+3 
+TransactionIndex:0}"
+
+INFO [07-26|16:10:59.020] State modification                       pre="map[0x123463a4B065722E99115D6c222f267d9cABb524:0xc000643620 0x8D512169343cc6e108a8bB6ec5bc116C416eFc8E:0xc000643680 0xb59616524d51f5F557f94f6cF7Ac258599DF3A97:0xc0006436e0]" post="map[0x123463a4B065722E99115D6c222f267d9cABb524:0xc0006434a0 0x8D512169343cc6e108a8bB6ec5bc116C416eFc8E:0xc000643500 0xb59616524d51f5F557f94f6cF7Ac258599DF3A97:0xc000643560]"
+INFO [07-26|16:10:59.020] Receipt                                  
+receipt=
+"&{
+  Type:2 
+  PostState:[] 
+  Status:1 
+  CumulativeGasUsed:42000 
+  Bloom:[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] 
+  Logs:[] 
+  TxHash:0x53accdbc584c40d7557d024c48cf9e64055d7e4a2a22aefcc378b8c7cedd2920 
+  ContractAddress:0x0000000000000000000000000000000000000000 
+  GasUsed:21000 
+  EffectiveGasPrice:<nil> 
+  BlobGasUsed:0 
+  BlobGasPrice:<nil> 
+  BlockHash:0xb0eb30f48660f799f618972f9628f061d2bf13498a98dfca152300aab7a89348 
+  BlockNumber:+3 
+  TransactionIndex:1}"
+
