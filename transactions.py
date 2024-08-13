@@ -7,6 +7,7 @@ node_urls = [
     'http://127.0.0.1:8001',
     'http://127.0.0.1:8002',
     'http://127.0.0.1:8003',
+    'http://127.0.0.1:8004',
 ]
 
 # Set up account information
@@ -16,7 +17,7 @@ account_from = {
 }
 
 # Number of transactions to send
-nbr_transactions = 3000
+nbr_transactions = 10000
 
 # Contract address
 contract_address = '0x4242424242424242424242424242424242424242'
@@ -70,4 +71,8 @@ for i in range(nbr_transactions):
     print(f'Transaction {i} sent to {node_url} with hash: {tx_hash.hex()}')
 
     # Sleep for a very short time to avoid hitting rate limits
-    time.sleep(0.05)
+    time.sleep(0.02)
+    if(i % 300 == 0):
+        time.sleep(1)
+    if(i % 1000 == 0 and i !=0):
+        time.sleep(10)

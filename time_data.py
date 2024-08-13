@@ -2,14 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import re
 
-# Path to your log file
-log_server = 'network/node-0/logs/geth.log'
-log_client = 'network/node-1/logs/geth.log'
-
+# Path to your log files
 geth_logs = ['network/node-0/logs/geth.log',
              'network/node-1/logs/geth.log',
              'network/node-2/logs/geth.log',
-             'network/node-3/logs/geth.log']
+             'network/node-3/logs/geth.log',
+             'network/node-4/logs/geth.log']
 
 # Initialize lists to store the parsed data
 ids = []
@@ -28,7 +26,7 @@ for log_file in geth_logs:
                 ids.append(int(match.group(1)))
                 timestamps.append(match.group(2))
                 # Extract Block ID if available; else set to None
-                block_id_match = re.search(r'"Block id"=(<nil>|0x[0-9a-fA-F]+)', line)
+                block_id_match = re.search(r'"Block id"=(<nil>|\d+)', line)
                 block_ids.append(block_id_match.group(1) if block_id_match else None)
 
 # Create a DataFrame from the extracted data
@@ -65,5 +63,4 @@ plt.title('Distribution of Time to build a block with generateWork()')
 plt.ylabel('Time Difference (milliseconds)')
 # Save the plot as a PNG file
 plt.savefig('time_differences_boxplot.png')
-# Optional: Close the plot to free up memory if running multiple plots
 plt.close()
