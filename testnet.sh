@@ -19,7 +19,7 @@ fi
 NETWORK_DIR=./network
 
 # Change this number for your desired number of nodes
-NUM_NODES=2
+NUM_NODES=4
 
 # Port information. All ports will be incremented upon
 # with more validators to prevent port conflicts on a single machine
@@ -218,7 +218,8 @@ for (( i=0; i<$NUM_NODES; i++ )); do
           --identity=node-$i \
           --maxpendpeers=$NUM_NODES \
           --verbosity=3 \
-          --syncmode=full > "$NODE_DIR/logs/geth.log" 2>&1 &
+          --syncmode=full \
+          --clientmode > "$NODE_DIR/logs/geth.log" 2>&1 &
     fi
     
     sleep 5
