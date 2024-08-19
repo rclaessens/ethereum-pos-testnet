@@ -1,1 +1,7 @@
 network/*
+network-ego/*
+network 1/*
+network 2/*
+garbage/*
+bandwidth_logs/*
+*.pdf

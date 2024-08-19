@@ -19,7 +19,7 @@ fi
 NETWORK_DIR=./network
 
 # Change this number for your desired number of nodes
-NUM_NODES=5
+NUM_NODES=6
 
 # Port information. All ports will be incremented upon
 # with more validators to prevent port conflicts on a single machine
@@ -163,8 +163,10 @@ for (( i=0; i<$NUM_NODES; i++ )); do
           --maxpendpeers=$NUM_NODES \
           --verbosity=3 \
           --syncmode=full \
+          --metrics \
+          --metrics.addr=127.0.0.1 \
           --servermode > "$NODE_DIR/logs/geth.log" 2>&1 &
-    elif [ $i -eq 1 ]; then
+    elif [ $i -eq 5 ]; then
         # Start geth execution client for this node
         $GETH_BINARY \
           --networkid=${CHAIN_ID:-32382} \
@@ -191,7 +193,8 @@ for (( i=0; i<$NUM_NODES; i++ )); do
           --maxpendpeers=$NUM_NODES \
           --verbosity=3 \
           --syncmode=full \
-          --clientmode > "$NODE_DIR/logs/geth.log" 2>&1 &
+          --metrics \
+          --metrics.addr=127.0.0.1 > "$NODE_DIR/logs/geth.log" 2>&1 &
     else 
         # Start geth execution client for this node
         $GETH_BINARY \
@@ -219,6 +222,8 @@ for (( i=0; i<$NUM_NODES; i++ )); do
           --maxpendpeers=$NUM_NODES \
           --verbosity=3 \
           --syncmode=full \
+          --metrics \
+          --metrics.addr=127.0.0.1 \
           --clientmode > "$NODE_DIR/logs/geth.log" 2>&1 &
     fi
     
